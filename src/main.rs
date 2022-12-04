@@ -4,6 +4,7 @@ use std::fs;
 mod day_01;
 mod day_02;
 mod day_03;
+mod day_04;
 
 pub enum TypeInput {
     Small,
@@ -50,6 +51,8 @@ fn main() {
         "2.2" => { day_02::part2(type_input.get_input("02")) }
         "3.1" => { day_03::part1(type_input.get_input("03")) }
         "3.2" => { day_03::part2(type_input.get_input("03")) }
+        "4.1" => { day_04::part1(type_input.get_input("04")) }
+        "4.2" => { day_04::part2(type_input.get_input("04")) }
         _ => { "Invalid input".to_string() }
     };
 
