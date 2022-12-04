@@ -31,11 +31,10 @@ pub fn part1(input: String) -> String {
 
 pub fn part2(input: String) -> String {
     let lines: Vec<_> = input.lines().collect();
-    let size_group = 3;
-    let num_groups = lines.len() / size_group;
+    let num_groups = lines.len() / 3;
 
     let result: i32 = (0..num_groups).map(|id_group| {
-        let subgroups: Vec<HashSet<char>> = lines[id_group*size_group..id_group*size_group + size_group].iter().map(|&e| HashSet::from_iter(e.chars())).collect();
+        let subgroups: Vec<HashSet<char>> = lines[id_group*3..id_group*3 + 3].iter().map(|&e| HashSet::from_iter(e.chars())).collect();
 
         let common_elems = subgroups.into_iter().reduce(|set, next| {
             set.intersection(&next).map(|c| *c).collect::<HashSet<char>>()
