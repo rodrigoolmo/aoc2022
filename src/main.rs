@@ -2,6 +2,7 @@ use std::io;
 use std::fs;
 
 mod day_01;
+mod day_02;
 
 pub enum TypeInput {
     Small,
@@ -44,6 +45,8 @@ fn main() {
     let result = match day.trim() {
         "1.1" => { day_01::part1(type_input.get_input("01")) }
         "1.2" => { day_01::part2(type_input.get_input("01")) }
+        "2.1" => { day_02::part1(type_input.get_input("02")) }
+        "2.2" => { day_02::part2(type_input.get_input("02")) }
         _ => { "Invalid input".to_string() }
     };
 
