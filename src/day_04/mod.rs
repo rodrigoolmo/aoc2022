@@ -1,6 +1,4 @@
-fn to_i32(s: &str) -> i32 {
-    s.parse::<i32>().unwrap()
-}
+use crate::utils::to_i32;
 
 pub fn part1(input: String) -> String {
     let result = input.lines().filter(|line| {
