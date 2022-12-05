@@ -2,13 +2,10 @@ use std::{collections::BTreeMap};
 
 use crate::utils::to_i32;
 
-pub fn part1(input: String) -> String {
-    let (part_1, part_2) = input.split_once("\n\n").unwrap();
-
+fn parse_stacks(input: &str) -> BTreeMap<i32, Vec<char>> {
     let mut stacks: BTreeMap<i32, Vec<char>> = BTreeMap::new();
 
-    // Parse stacks
-    part_1.lines().for_each(|line| {
+    input.lines().for_each(|line| {
         let chars = Vec::from_iter(line.chars());
         let chunks = chars.chunks(4);
 
@@ -28,6 +25,14 @@ pub fn part1(input: String) -> String {
 
     // Stack order reverse
     stacks.iter_mut().for_each(|(_, stack)| stack.reverse());
+
+    stacks
+}
+
+pub fn part1(input: String) -> String {
+    let (part_1, part_2) = input.split_once("\n\n").unwrap();
+
+    let mut stacks = parse_stacks(part_1);
 
     // Rearrangement
     part_2.lines().for_each(|line| {
@@ -51,29 +56,7 @@ pub fn part1(input: String) -> String {
 pub fn part2(input: String) -> String {
     let (part_1, part_2) = input.split_once("\n\n").unwrap();
 
-    let mut stacks: BTreeMap<i32, Vec<char>> = BTreeMap::new();
-
-    // Parse stacks
-    part_1.lines().for_each(|line| {
-        let chars = Vec::from_iter(line.chars());
-        let chunks = chars.chunks(4);
-
-        chunks.enumerate().for_each(|(i, chunk)| {
-            if chunk[0] == '[' {
-                let element = chunk[1];
-                let key = i as i32 + 1;
-
-                let stack_opt = &mut stacks.get_mut(&key);
-                match stack_opt {
-                    Some(stack) => { stack.push(element); },
-                    None => { stacks.insert(key, vec![element]); }
-                }
-            }
-        });
-    });
-
-    // Stack order reverse
-    stacks.iter_mut().for_each(|(_, stack)| stack.reverse());
+    let mut stacks = parse_stacks(part_1);
 
     // Rearrangement
     part_2.lines().for_each(|line| {
