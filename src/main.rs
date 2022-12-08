@@ -9,6 +9,7 @@ mod day_04;
 mod day_05;
 mod day_06;
 mod day_07;
+mod day_08;
 
 pub enum TypeInput {
     Small,
@@ -63,6 +64,8 @@ fn main() {
         "6.2" => { day_06::part2(type_input.get_input("06")) }
         "7.1" => { day_07::part1(type_input.get_input("07")) }
         "7.2" => { day_07::part2(type_input.get_input("07")) }
+        "8.1" => { day_08::part1(type_input.get_input("08")) }
+        "8.2" => { day_08::part2(type_input.get_input("08")) }
         _ => { "Invalid input".to_string() }
     };
 
