@@ -38,7 +38,6 @@ impl Point {
 }
 
 #[derive(Debug, Copy, Clone)]
-
 enum Movement {
     Up,
     Down,
